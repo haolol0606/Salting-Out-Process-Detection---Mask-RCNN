@@ -8,7 +8,9 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 from numpy import zeros, asarray
 import pycocotools.mask as mask_util
-sys.path.append('C:/Users/user/Documents/Degree Note File (XMUM)/Year 4 Sem 1/Thesis 2/Code/Mask-RCNN-TF2-Python3.7.3')
+
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 import mrcnn
 import mrcnn.utils
 import mrcnn.config
@@ -140,7 +142,7 @@ inference_model = MaskRCNN(
 )
 
 inference_model.load_weights(
-    filepath=r'C:\Users\user\Documents\Degree Note File (XMUM)\Year 4 Sem 1\Thesis 2\Code\Mask-RCNN-TF2-Python3.7.3\Salting-Out-Transfer-Learning\log\salting_out_heads_trained_3.h5', 
+    filepath='salting_out_heads_trained_3.h5', 
     by_name=True
 )
 
@@ -392,11 +394,7 @@ if __name__ == "__main__":
     validation_dataset = SaltingOutDataset()
 
     annotation_files = [
-        #r"C:\Users\user\Documents\Degree Note File (XMUM)\Year 4 Sem 1\Thesis 2\Thesis Dataset 1 Annotated\annotations\instances_default.json",
-        #r"C:\Users\user\Documents\Degree Note File (XMUM)\Year 4 Sem 1\Thesis 2\Thesis Dataset 3 Annotated\annotations\instances_default.json",
-        r"C:\Users\user\Documents\Degree Note File (XMUM)\Year 4 Sem 1\Thesis 2\Thesis Dataset 4 Annotated\annotations\instances_default.json",
-        r"C:\Users\user\Documents\Degree Note File (XMUM)\Year 4 Sem 1\Thesis 2\Thesis Dataset 5 Annotated\annotations\instances_default.json",
-        r"C:\Users\user\Documents\Degree Note File (XMUM)\Year 4 Sem 1\Thesis 2\Thesis Dataset 6 Annotated\annotations\instances_default.json",
+        "dataset.json",
     ]
     datasets = []
     for annotation_file in annotation_files:

@@ -1,5 +1,8 @@
 import sys
-sys.path.append('C:/Users/user/Documents/Degree Note File (XMUM)/Year 4 Sem 1/Thesis 2/Code/Mask-RCNN-TF2-Python3.7.3')
+import os
+
+#import mrcnn
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 import mrcnn
 import mrcnn.config
@@ -28,12 +31,12 @@ inference_model = mrcnn.model.MaskRCNN(mode="inference",
 
 # Load the trained weights into the inference model
 inference_model.load_weights(
-    filepath=r'C:\Users\user\Documents\Degree Note File (XMUM)\Year 4 Sem 1\Thesis 2\Code\Mask-RCNN-TF2-Python3.7.3\Salting-Out-Transfer-Learning\log\salting_out_heads_trained_3.h5', 
+    filepath="salting_out_heads_trained_3.h5", 
     by_name=True
 )
 
 # load the input image, convert it from BGR to RGB channel
-image = cv2.imread(r"C:\Users\user\Documents\Degree Note File (XMUM)\Year 4 Sem 1\Thesis 2\Testing 13 Jan\DATA431.jpg")
+image = cv2.imread("DATA8.jpg")
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
 # Perform a forward pass of the network to obtain the results

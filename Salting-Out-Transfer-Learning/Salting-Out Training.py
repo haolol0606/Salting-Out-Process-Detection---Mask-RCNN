@@ -8,8 +8,10 @@ import pycocotools.mask as mask_util
 import numpy as np
 import cv2
 from numpy import zeros, asarray
+
+#import mrcnn
 import sys
-sys.path.append('C:/Users/user/Documents/Degree Note File (XMUM)/Year 4 Sem 1/Thesis 2/Code/Mask-RCNN-TF2-Python3.7.3')
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 import mrcnn.utils
 import mrcnn.config
 import mrcnn.model
@@ -132,12 +134,7 @@ class SaltingOutConfig(mrcnn.config.Config):
 
 # Define the file paths for datasets
 annotation_files = [
-    r"C:\Users\user\Documents\Degree Note File (XMUM)\Year 4 Sem 1\Thesis 2\Thesis Dataset 1 Annotated\annotations\instances_default.json",
-    #r"C:\Users\user\Documents\Degree Note File (XMUM)\Year 4 Sem 1\Thesis 2\Dataset_2_Annotate\vott-json-export\Dataset-2-export.json",
-    r"C:\Users\user\Documents\Degree Note File (XMUM)\Year 4 Sem 1\Thesis 2\Thesis Dataset 3 Annotated\annotations\instances_default.json",
-    r"C:\Users\user\Documents\Degree Note File (XMUM)\Year 4 Sem 1\Thesis 2\Thesis Dataset 4 Annotated\annotations\instances_default.json",
-    r"C:\Users\user\Documents\Degree Note File (XMUM)\Year 4 Sem 1\Thesis 2\Thesis Dataset 5 Annotated\annotations\instances_default.json",
-    r"C:\Users\user\Documents\Degree Note File (XMUM)\Year 4 Sem 1\Thesis 2\Thesis Dataset 6 Annotated\annotations\instances_default.json"
+    "datasets.json"
 ]
 
 # Initialize datasets
@@ -163,7 +160,7 @@ print(f"Number of validation images: {validation_image_count}")
 tf.get_logger().setLevel('ERROR')
 
 # Define the log directory path consistently
-log_train_dir = r"C:\Users\user\Documents\Degree Note File (XMUM)\Year 4 Sem 1\Thesis 2\Code\Mask-RCNN-TF2-Python3.7.3\Salting-Out-Transfer-Learning\log"
+log_train_dir = "\log"
 os.makedirs(log_train_dir, exist_ok=True)
 
 # Model Configuration
@@ -176,9 +173,7 @@ model = mrcnn.model.MaskRCNN(mode='training',
                              config=saltingout_config)
 
 # Load weights with the correct path formatting
-model.load_weights(filepath=r"C:\Users\user\Documents\Degree Note File (XMUM)\Year 4 Sem 1\Thesis 2\Code\Mask-RCNN-TF2-Python3.7.3\Salting-Out-Transfer-Learning\log\salting_out_heads_trained_2.h5",
-                   #filepath=r"C:\Users\user\Documents\Degree Note File (XMUM)\Year 4 Sem 1\Thesis 2\Code\Mask-RCNN-TF2-Python3.7.3\mask_rcnn_coco.h5",
-                   #filepath=r"C:\Users\user\Documents\Degree Note File (XMUM)\Year 4 Sem 1\Thesis 2\Code\Mask-RCNN-TF2-Python3.7.3\Salting-Out-Transfer-Learning\log\salting_out_heads_trained.h5",
+model.load_weights(filepath="salting_out_heads_trained_3.h5",
                    by_name=True,
                    exclude=["mrcnn_class_logits", "mrcnn_bbox_fc", "mrcnn_bbox", "mrcnn_mask"])
 

@@ -2,8 +2,9 @@ import sys
 import cv2
 import os
 import numpy as np
-# Append the required path for Mask R-CNN
-sys.path.append('C:/Users/user/Documents/Degree Note File (XMUM)/Year 4 Sem 1/Thesis 2/Code/Mask-RCNN-TF2-Python3.7.3')
+
+#import mrcnn
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from mrcnn import config, model
 
 # Define the class names (Background + Reacting + Reaction Complete)
@@ -25,12 +26,12 @@ inference_model = model.MaskRCNN(mode="inference",
 
 # Load the trained weights
 inference_model.load_weights(
-    filepath=r'C:\Users\user\Documents\Degree Note File (XMUM)\Year 4 Sem 1\Thesis 2\Code\Mask-RCNN-TF2-Python3.7.3\Salting-Out-Transfer-Learning\log\salting_out_heads_trained2.h5', 
+    filepath="salting_out_heads_trained_3.h5", 
     by_name=True
 )
 
 # Open video capture (0 for webcam or specify a video file path)
-cap = cv2.VideoCapture(r"C:\Users\user\Documents\Degree Note File (XMUM)\Year 4 Sem 1\Thesis 2\Thesis Dataset 5\example.mp4")  # Use "0" for webcam or replace with video file path
+cap = cv2.VideoCapture("video.mp4")  # Use "0" for webcam or replace with video file path
 
 # Check if video capture is opened successfully
 if not cap.isOpened():
