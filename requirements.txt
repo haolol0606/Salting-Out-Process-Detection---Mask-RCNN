@@ -1,13 +1,26 @@
-numpy
-scipy
-Pillow
-cython
-matplotlib
+# Scientific stack
+numpy==1.18.5             # Compatible with TF2.0 and other libs
+scipy==1.4.1
+Pillow==7.2.0
+cython==0.29.36
+matplotlib==3.2.2
+
+# Proto buffers
 protobuf==3.20.0
+
+# Image processing
 scikit-image==0.16.2
+opencv-python==4.5.5.64
+imgaug==0.4.0
+
+# Deep learning backend
 tensorflow==2.0.0
 keras==2.3.1
-opencv-python
+
+# Additional requirements
 h5py==2.10.0
-imgaug
-IPython[all]
+IPython[all]==7.16.3
+
+# Networking compat (if needed)
+requests==2.28.2
+urllib3==1.26.16
