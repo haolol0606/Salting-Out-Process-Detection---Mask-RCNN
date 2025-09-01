@@ -6,7 +6,7 @@ Mask R-CNN for salting-out process detection (Final Year Project)
 
 The trained model can be downloaded inside my google drive if needed.
 Please download it here: [Google Drive Link](https://drive.google.com/drive/folders/1ObN2_8ZYMwse-4bhkcp_3OUC6tzrm-K6?usp=sharing)
-Place the file into this folder before training or testing.
+Feel free to test the model.
 
 ## License
 
